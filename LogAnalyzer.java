@@ -20,7 +20,7 @@ public class LogAnalyzer
         // access counts.
         hourCounts = new int[24];
         // Create the reader to obtain the data.
-        reader = new LogfileReader("demo.log");
+        reader = new LogfileReader("weblog.txt");
     }
 
     /**
