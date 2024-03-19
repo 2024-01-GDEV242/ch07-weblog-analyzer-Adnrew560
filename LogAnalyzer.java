@@ -6,6 +6,10 @@
  */
 public class LogAnalyzer
 {
+    // Where to calculate the monthly access counts.
+    private int[] monthCounts;
+    // Where to calculate the daily access counts.
+    private int[] dayCounts;
     // Where to calculate the hourly access counts.
     private int[] hourCounts;
     // Use a LogfileReader to access the data.
@@ -18,6 +22,8 @@ public class LogAnalyzer
     { 
         // Create the array object to hold the hourly
         // access counts.
+        monthCounts = new int[12];
+        dayCounts = new int[31];
         hourCounts = new int[24];
         // Create the reader to obtain the data.
         reader = new LogfileReader("weblog.txt");
@@ -31,11 +37,37 @@ public class LogAnalyzer
     { 
         // Create the array object to hold the hourly
         // access counts.
+        monthCounts = new int[12];
+        dayCounts = new int[31];
         hourCounts = new int[24];
         // Create the reader to obtain the data.
         reader = new LogfileReader(filename);
     }
 
+    /**
+     * Analyze the monthly access data from the log file.
+     */
+    public void analyzeMonthlyData()
+    {
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            int month = entry.getMonth();
+            monthCounts[month]++;
+        }
+    }
+    
+    /**
+     * Analyze the daily access data from the log file.
+     */
+    public void analyzeDailyData()
+    {
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            int day = entry.getDay();
+            dayCounts[day]++;
+        }
+    }
+    
     /**
      * Analyze the hourly access data from the log file.
      */
@@ -140,4 +172,6 @@ public class LogAnalyzer
         }
         return range;
     }
+    
+    
 }
