@@ -82,4 +82,24 @@ public class LogAnalyzer
         }
         return total;
     }
+    
+    /**
+     * Finds the busiest hour
+     * @return int The hour at which the site is the busiest
+     */
+    
+    public int busiestHour()
+    {
+        int busiest = 0;
+        int amount = 0;
+        for(int hour = 0; hour < hourCounts.length; hour++)
+        {
+            if(hourCounts[hour] > amount)
+            {
+                busiest = hour;
+                amount = hourCounts[hour];
+            }
+        }
+        return busiest;
+    }
 }
