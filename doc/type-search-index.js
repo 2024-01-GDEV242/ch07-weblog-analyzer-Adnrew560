@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"LogAnalyzer"},{"p":"<Unnamed>","l":"LogEntry"},{"p":"<Unnamed>","l":"LogfileCreator"},{"p":"<Unnamed>","l":"LogfileReader"},{"p":"<Unnamed>","l":"LoglineTokenizer"}];updateSearchResults();
