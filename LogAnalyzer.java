@@ -22,8 +22,10 @@ public class LogAnalyzer
     { 
         // Create the array object to hold the hourly
         // access counts.
-        monthCounts = new int[12];
-        dayCounts = new int[31];
+        monthCounts = new int[13];
+        monthCounts[0] = -1;
+        dayCounts = new int[32];
+        dayCounts[0] = -1;
         hourCounts = new int[24];
         // Create the reader to obtain the data.
         reader = new LogfileReader("weblog.txt");
@@ -37,8 +39,10 @@ public class LogAnalyzer
     { 
         // Create the array object to hold the hourly
         // access counts.
-        monthCounts = new int[12];
-        dayCounts = new int[31];
+        monthCounts = new int[13];
+        monthCounts[0] = -1;
+        dayCounts = new int[32];
+        dayCounts[0] = -1;
         hourCounts = new int[24];
         // Create the reader to obtain the data.
         reader = new LogfileReader(filename);
@@ -247,5 +251,17 @@ public class LogAnalyzer
             }
         }
         return quietest;
+    }
+    
+    /**
+     * Finds the total number of times the site was accessed each month
+     * @return int[] An array of the number of accesses each month
+     */
+    public void totalAccessesPerMonth()
+    {
+        for(int month = 1; month < monthCounts.length; month++)
+        {
+            System.out.println(month + ": " + monthCounts[month]);
+        }
     }
 }
