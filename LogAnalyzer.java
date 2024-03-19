@@ -68,4 +68,18 @@ public class LogAnalyzer
     {
         reader.printData();
     }
+    
+    /**
+     * Read the number of times the site has been accessed
+     * @return int The number of times the site has been accessed
+     */
+    public int numberOfAccesses()
+    {
+        int total = 0;
+        for(int hour = 0; hour < hourCounts.length; hour++)
+        {
+            total += hourCounts[hour];
+        }
+        return total;
+    }
 }
