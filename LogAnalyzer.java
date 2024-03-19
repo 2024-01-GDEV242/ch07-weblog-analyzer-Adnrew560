@@ -85,7 +85,7 @@ public class LogAnalyzer
     
     /**
      * Finds the busiest hour
-     * @return int The hour at which the site is the busiest
+     * @return int The hour that appears the most in the log, ties broken by whichever came first
      */
     public int busiestHour()
     {
@@ -103,8 +103,8 @@ public class LogAnalyzer
     }
     
     /**
-     * Finds the busiest hour
-     * @return int The hour at which the site is the busiest
+     * Finds the quietest hour
+     * @return int The hour that appears the least in the log, ties broken by whichever came first
      */
     public int quietestHour()
     {
