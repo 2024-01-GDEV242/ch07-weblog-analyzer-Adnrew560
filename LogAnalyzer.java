@@ -120,4 +120,24 @@ public class LogAnalyzer
         }
         return quietest;
     }
+    
+    /**
+     * Finds the busiest set of two consecutive hours
+     * @return int[] The range of hours that appears most in the log, ties broken by whichever came first
+     */
+    public int[] busiestTwoHour()
+    {
+        int[] range = {23,0};
+        int amount = hourCounts[23] + hourCounts[0];
+        for(int hour = 1; hour < hourCounts.length; hour++)
+        {
+            if((hourCounts[hour-1] + hourCounts[hour]) > amount)
+            {
+                range[0] = hour - 1;
+                range[1] = hour;
+                amount = hourCounts[hour-1] + hourCounts[hour];
+            }
+        }
+        return range;
+    }
 }
