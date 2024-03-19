@@ -87,7 +87,6 @@ public class LogAnalyzer
      * Finds the busiest hour
      * @return int The hour at which the site is the busiest
      */
-    
     public int busiestHour()
     {
         int busiest = 0;
@@ -101,5 +100,24 @@ public class LogAnalyzer
             }
         }
         return busiest;
+    }
+    
+    /**
+     * Finds the busiest hour
+     * @return int The hour at which the site is the busiest
+     */
+    public int quietestHour()
+    {
+        int quietest = 0;
+        int amount = hourCounts[0];
+        for(int hour = 1; hour < hourCounts.length; hour++)
+        {
+            if(hourCounts[hour] < amount)
+            {
+                quietest = hour;
+                amount = hourCounts[hour];
+            }
+        }
+        return quietest;
     }
 }
