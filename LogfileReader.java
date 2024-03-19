@@ -158,4 +158,33 @@ public class LogfileReader implements Iterator<LogEntry>
             data.add(creator.createEntry());
         }
     }
+    
+    /**
+     * Gets the first item as an array of 5 numbers
+     */
+    public int[] getFirst()
+    {
+        int y = entries.get(0).getYear();
+        int m = entries.get(0).getMonth();
+        int d = entries.get(0).getDay();
+        int h = entries.get(0).getHour();
+        int mi = entries.get(0).getMinute();
+        int[] value = {y,m,d,h,mi};
+        return value;
+    }
+    
+    /**
+     * Gets the last item as an array of 5 numbers
+     */
+    public int[] getLast()
+    {
+        int a = entries.size() - 1;
+        int y = entries.get(a).getYear();
+        int m = entries.get(a).getMonth();
+        int d = entries.get(a).getDay();
+        int h = entries.get(a).getHour();
+        int mi = entries.get(a).getMinute();
+        int[] value = {y,m,d,h,mi};
+        return value;
+    }
 }

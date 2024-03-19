@@ -1,3 +1,4 @@
+import java.util.Arrays;
 /**
  * Read web server data and analyse hourly access patterns.
  * 
@@ -6,6 +7,7 @@
  */
 public class LogAnalyzer
 {
+    private int[][] range;
     // Where to calculate the monthly access counts.
     private int[] monthCounts;
     // Where to calculate the daily access counts.
@@ -29,6 +31,9 @@ public class LogAnalyzer
         hourCounts = new int[24];
         // Create the reader to obtain the data.
         reader = new LogfileReader("weblog.txt");
+        range = new int[2][5];
+        range[0] = reader.getFirst();
+        range[1] = reader.getLast();
     }
     
     /**
@@ -254,8 +259,7 @@ public class LogAnalyzer
     }
     
     /**
-     * Finds the total number of times the site was accessed each month
-     * @return int[] An array of the number of accesses each month
+     * Prints the total number of times the site was accessed each month
      */
     public void totalAccessesPerMonth()
     {
@@ -263,5 +267,39 @@ public class LogAnalyzer
         {
             System.out.println(month + ": " + monthCounts[month]);
         }
+    }
+    
+    /**
+     * Finds the total number of times the site was accessed each month
+     * @return double[] An array of the average number of accesses each month
+     */
+    public double[] averageAccessesPerMonth()
+    {
+        double[] result = new double[13];
+        int years = 1 + range[1][0] - range[0][0];
+        Arrays.fill(result,years);
+        result[0] = -1;
+        //This part checks the boundaries of the dataset.
+        //for example: it would be inaccurate to divide by 2 for january if
+        //january only shows up once, even if the other months show up twice
+        for(int i = 1; i < 13; i++)
+        {
+            if(i < range[0][1])
+            {
+                result[i]--;
+            }
+            if(i > range[1][1])
+            {
+                result[i]--;
+            }
+        }
+        for(int month = 1; month < monthCounts.length; month++)
+        {
+            if(result[month] > 0)
+            {
+                result[month] = monthCounts[month] / result[month];
+            }
+        }
+        return result;
     }
 }
