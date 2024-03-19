@@ -173,5 +173,79 @@ public class LogAnalyzer
         return range;
     }
     
+    /**
+     * Finds the busiest day
+     * @return int The day that appears the most in the log, ties broken by whichever came first
+     */
+    public int busiestDay()
+    {
+        int busiest = 0;
+        int amount = 0;
+        for(int day = 0; day < dayCounts.length; day++)
+        {
+            if(dayCounts[day] > amount)
+            {
+                busiest = day;
+                amount = dayCounts[day];
+            }
+        }
+        return busiest;
+    }
     
+    /**
+     * Finds the quietest day
+     * @return int The day that appears the least in the log, ties broken by whichever came first
+     */
+    public int quietestDay()
+    {
+        int quietest = 0;
+        int amount = dayCounts[0];
+        for(int day = 1; day < dayCounts.length; day++)
+        {
+            if(dayCounts[day] < amount)
+            {
+                quietest = day;
+                amount = dayCounts[day];
+            }
+        }
+        return quietest;
+    }
+    
+    /**
+     * Finds the busiest month
+     * @return int The month that appears the most in the log, ties broken by whichever came first
+     */
+    public int busiestMonth()
+    {
+        int busiest = 0;
+        int amount = 0;
+        for(int month = 0; month < monthCounts.length; month++)
+        {
+            if(monthCounts[month] > amount)
+            {
+                busiest = month;
+                amount = monthCounts[month];
+            }
+        }
+        return busiest;
+    }
+    
+    /**
+     * Finds the quietest month
+     * @return int The month that appears the least in the log, ties broken by whichever came first
+     */
+    public int quietestMonth()
+    {
+        int quietest = 0;
+        int amount = monthCounts[0];
+        for(int month = 1; month < monthCounts.length; month++)
+        {
+            if(monthCounts[month] < amount)
+            {
+                quietest = month;
+                amount = monthCounts[month];
+            }
+        }
+        return quietest;
+    }
 }
